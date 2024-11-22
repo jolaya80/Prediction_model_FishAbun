@@ -1,0 +1,20 @@
+## DATA GATHERING AND MANIPULATION TO DEVELOP A FISH ABUNDANCE PREDICTOR MODEL
+
+To evaluate the effect on abundance of target species the goal is to develop a multivariable model for prediction, relating predictors (ecosystem characteristics and fish population) to outcomes (abundance of target species). This model will predict, for example, which characteristics of the ecosystems make it have higher absolute abundance benefit after restoration. 
+
+Data gathering
+
+For USA geographies the data from the NCRMP that provides a biennial ecological characterization of general reef condition for reef fishes, corals, and benthic habitat (i.e., fish species composition, density, and size; coral species composition, density, size, condition; and benthic community cover) at a broad spatial scale.
+
+#for creation of the dataframe follow "Coral_DB_generation.R"
+
+From the benthic cover database, the percentage of cover for the different substrate cover categories was calculated for each primary sampling unit.
+workflow:
+1. the data frames from the three subregions in Florida (DRTO, KFL, and SFC) are combined in to a single dataframe
+2. percentage cover for each substrate category estimated by summing the number of points (see protocol) with substrate cover into a single value per category
+3. transform the CATEGORY column into individual columns and using the corresponding per_cover values as the cell values
+4. because some Primary sample units ID are repeated among Regions, we concatenate the two columns to make a unique ID for each PSU
+
+
+From the Coral demographic data frame, the richness and Shannon biodiversity index was calculated and the results merged with the benthic data frame using the PRIMARY_SAMPLE_UNIT. This new data frame contains the predictor variables of the coral reefs to use in the model 
+
